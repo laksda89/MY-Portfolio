@@ -55,7 +55,9 @@ I download the datasets for the year 2025 from the link below
 # PHASE 2 : PREPARE
 # GUIDING QUESTIONS
 ## 1.Where is the data located?
-            Data is located in the link provided [https://divvy-tripdata.s3.amazonaws.com/index.html](https://divvy-tripdata.s3.amazonaws.com/index.html)
+## 3.Are there issues with bias or credibility in this data? Does your data ROCCC?
+            Data is located in the link provided below
+            [https://divvy-tripdata.s3.amazonaws.com/index.html](https://divvy-tripdata.s3.amazonaws.com/index.html)
 
 ## 2.How is the data organized?
             The data is organized as zip files. I downloaded the zip files for the year 2025,12 folders for 12 months. Extracted the data 
@@ -63,12 +65,13 @@ I download the datasets for the year 2025 from the link below
 
 ## 3.Are there issues with bias or credibility in this data? Does your data ROCCC?
 
-            There is no bias in the data and it is credible data that follows ROCCC(Reliable,Original,Comprehensive,Current,Cited).The data 
-            is licensed with an agreement, the data is ensured privacy and secured by storing the credit card details safe, the data 
+            There is no bias in the data and it is credible data that follows ROCCC(Reliable,Original,Comprehensive,Current,Cited).
+            The data is licensed with an agreement, the data is ensured privacy and secured by storing the credit card details safe, the data 
             accessibility is restricted to the common bike ride details alone.
 
 ## 4.How are you addressing licensing, privacy, security, and accessibility?
-            License : [https://divvybikes.com/data-license-agreement](https://divvybikes.com/data-license-agreement)
+            License 
+            [https://divvybikes.com/data-license-agreement](https://divvybikes.com/data-license-agreement)
 
 ## 5.How did you verify the data’s integrity?
             Data’s integrity is verified by running SQL queries as follows.
@@ -78,13 +81,13 @@ I download the datasets for the year 2025 from the link below
               as the bike would have been stolen if rides >= 24 and technical error if rides < 1 min.
 
 ## 6.How does it help you answer your question?
-            A clean new table of data is created for analysis with new parameters such as Ride length and Day of Week as additional data to help 
-            identify the ride pattern for casual and member customers. This insight will draw the difference between the ride patterns.
+            A clean new table of data is created for analysis with new parameters such as Ride length and Day of Week as additional 
+            data to help identify the ride pattern for casual and member customers. This insight will draw the difference between the ride patterns.
 
 ## 7.Are there any problems with the data?
-            The Start Station name and id as well as the End Station name and id had null values for 5585 records.Also some inconsistencies were 
-            found in the data, either corrected if possible or removed it if not appropriate for analysis. Preapred a clean data for Analysis 
-            using SQL.
+            The Start Station name and id as well as the End Station name and id had null values for 5585 records.Also some 
+            inconsistencies were found in the data, either corrected if possible or removed it if not appropriate for analysis. Preapred a 
+            clean data for Analysis using SQL.
             
 # PHASE 3 - PROCESS
 # GUIDING QUESTIONS
@@ -92,22 +95,103 @@ I download the datasets for the year 2025 from the link below
              To Clean, Process and  Analyze the data, Bigquery SQL is used.
 
 ## 2.Have you ensured your data’s integrity?
-              Yes, Data integrity is ensured by identifying and resolving missing or null values, removing duplicate records 
-              and performing data validation to catch errors through targeted filtering.
+             Yes, Data integrity is ensured by identifying and resolving missing or null values, removing duplicate records 
+             and performing data validation to catch errors through targeted filtering.
 
 ## 3.What steps have you taken to ensure that your data is clean?
-                To ensure data is clean and ready for analysis, fulfilled the ROCCC standard followed by Removing duplicates, 
-                Handling missing data or null values, Standardize Formatting, Validate Data and fix Outliers, Verify and Document 
-                Cleaning process.
+             To ensure data is clean and ready for analysis, fulfilled the ROCCC standard followed by Removing duplicates, 
+             Handling missing data or null values, Standardize Formatting, Validate Data and fix Outliers, Verify and Document 
+             cleaning process.
 
 ## 4.How can you verify that your data is clean and ready to analyze?
-                Performed final inspection using specific metrics and tests as follows.
-                1.The Duplicate Re-Check.
-                2.Business Logic “Smoke Test” : The end time is more than the start time of the ride.
-                3.Schema and Data Type check.
+             Performed final inspection using specific metrics and tests as follows.
+             1.The Duplicate Re-Check.
+             2.Business Logic “Smoke Test” : The end time is more than the start time of the ride.
+             3.Schema and Data Type check.
 
 ## 5.Have you documented your cleaning process so you can review and share those results?
-                The Cleaning process is documented to review and share results.
+             The Cleaning process is documented to review and share results.
+
+# PHASE 4 - ANALYZE
+# GUIDING QUESTIONS
+## 1.How should you organize your data to perform analysis on it?
+             The data from csv files for 12 months of the year 2025 have been extracted to form a raw data table. This table has been checked 
+             for Data integrity, Data Validation and formed into a clean data master table for analysis.
+
+## 2.Has your data been properly formatted?
+             Yes, Standardized Formatting.
+
+## 3.What surprises did you discover in the data?
+             1.The end time of the ride started before the start time of the ride in some records. These were eliminated.
+             2.The Start Station name and id was null for some records. In the same way the End Station name and id was also null for some records.
+               On deeper analysis, it is found that the rideable bike type was electric on both the above cases. This looks like a technical error.
+               So updated the null records to Start Station name/End Station name – On-Street Lock and Start Station id/End Station id – Stationless.
+
+## 4.What trends or relationships did you find in the data?
+             1.The Customers both casual and members prefer to ride Electric bike more than Classic bike as per the data of year 2025.
+             2.The total trip counts as well as Average Ride Length on weekdays and weekend separately for both casual and member customers.
+             3.Catagorize the rides according to 4 seasons (Spring, Summer, Autumn and Winter) and Average Ride Length to see behavior of casual and 
+               member customers.
+             4.Identify top 10 stations for casual and member customers respectively by performing JOINS.
+             5.Extract ride hour from the started at column of raw data to get insights about hourly ride pattern on weekdays and weekend for both 
+               casual and member customers.
+                  
+              ### See the Analysis folder for entire analysis process.
+     
+## 5.How will these insights help answer your business questions?
+             1.The Average ride Length of customers was high on all four seasons of the year 2025. This insight shows that casual customers ride 
+               leisurely and for a long time than Cyclistic member customers who ride bikes for commute to office on a daily basis, according to 
+               information provided earlier in case study. 
+             2.The casual customers ride on weekend in high numbers than weekdays. The peak time for casual customers on weekdays is after office hours 
+               and on weekend customers start rides by 8 am in the morning.  The casual customers ride mostly near attraction places like                                         parks,lakes,harbor,aquarium etc and some casual customers use bikes to commute to office on weekdays too. These casual customers are our 
+               target to propose annual membership.
+
+# PHASE 5 - SHARE
+# GUIDING QUESTIONS
+
+## 1.What is your final conclusion based on your analysis?
+             1.The casual customers total rides count is less than members for the year 2025, but the Average Ride Length of casual customers is 
+               always higher irrespective of season than members. This shows that casual customers ride leisurely for long hours than members who ride 
+               for commute to office. Some casual customers use the bike for commute to office other than leisure ride. This is to watch out for.
+             2.The casual customers are more in number during weekend than weekdays with higher Average Ride Length.As Said earlier, some casual 
+               customers ride during weekdays to office. 
+             3.The casual customers are more around the attraction places like parks,lakes,harbor,aquarium etc.
+             4.The Top 10 casual stations are nearly 90% attraction spots while Top10 member stations are Corporate areas.
+             5.The Hourly ride pattern shows the casual customers are intersted to ride bikes more after 5 pm that is office hours during weekdays and 
+               from 8 am in the morning till 8 pm in the evening peaking at 3pm during weekend.
+
+## 2.What tool is used for Data Visualization?
+             My data findings is presented as data visualization through Tableau.
+                    [link text itself]: http://www.reddit.com
+     [Click for Data Visualization](https://public.tableau.com/app/profile/palaniappan.venkatachalam/viz/MyPortfolio_17790754816860/TotalRidesRideableTypeAvg_RideLengthOnSeason)
+
+# PHASE - 6
+# GUIDING QUESTIONS
+## 1.How do annual members and casual riders use Cyclistic bikes differently?
+             1.Annual members count of rides is larger than casual customers for the year 2025. But the Average ride length of Casual customer is always 
+               more than members irrespective of season. 
+             2.Casual customers ride leisurely for long hours with high average ride length on weekend than weekdays while annual members use cyclistic 
+               bikes to commute to office.
+             3.Casual customers are seen more around tourist attraction places while annual members are seen more near corporate areas.
+
+## 2.Why would casual riders buy Cyclistic annual memberships?
+             1.The frequent casual riders have to spend more money on bike rides. If they become annual members, they can definetely save money.
+             2.When casual riders opt for membership they can enjoy the deals and benefits provided for Cyclistic members.
+
+## 3.How can Cyclistic use digital media to influence casual riders to become members?
+             1.Weekend Discounts and deals for annual membership could be introduced to make our casual customers into members. This can be telecasted in                         advertisements through you tube, news channels, televisions at stores,gym etc, stalls can be put on weekends near attraction places to 
+               influence casual customers.
+             2.Loyalty program, sweepstakes can be conducted to attract some casual customers, who rides to office on weekday to become Cyclistic members.
+             3.Referral program can be started so that current members can help add on more members by explaining the benefits they would enjoy through 
+               becoming a member. Doing this it is possible to get members from casual riders lot as well as public. 
+
+
+
+                    
+
+
+
+
 
 
  
