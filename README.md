@@ -27,25 +27,32 @@ analyzing the Cyclistic historical bike trip data to identify trends.
 I download the datasets for the year 2025 from the link below
 [https://divvy-tripdata.s3.amazonaws.com/index.html](https://divvy-tripdata.s3.amazonaws.com/index.html)
 
-## PHASE 1 : ASK
-### 1.What are the business Tasks?
-        1.Identify how Casual riders and Annual members use Cyclistic bikes differently. From these insights, design a new marketing strategy to convert casual              riders into annual members.
+# PHASE 1 : ASK
+## 1.What are the business Tasks?
+        1.Identify how Casual riders and Annual members use Cyclistic bikes differently. From these insights, design a new marketing 
+          strategy to convert casual              riders into annual members.
         2.Why would casual riders buy Cyclistic annual memberships?
         3.How can Cyclistic use digital media to influence casual riders to become members?
- ### 2.Who the Audience are?
+
+## 2.Who the Audience are?
         The Audience are our Stakeholders. Our Key Stakeholders are as follows.
-        • Lily Moreno: The director of marketing and my manager. Moreno is responsible for the development of campaigns and initiatives to promote the bike-share program. These may include email, social media, and other channels.
+        • Lily Moreno: The director of marketing and my manager. Moreno is responsible for the development of campaigns and initiatives 
+          to promote the bike-share program. These may include email, social media, and other channels.
 
-        • Cyclistic marketing analytics team: A team of data analysts who are responsible for collecting, analyzing, and reporting data that helps guide Cyclistic marketing strategy. I joined this team six months ago and have been busy learning about Cyclistic’s mission and business goals — as well as how, as a              junior data analyst, can help Cyclistic achieve them.
+        • Cyclistic marketing analytics team: A team of data analysts who are responsible for collecting, analyzing, and reporting data 
+          that helps guide Cyclistic marketing strategy. I joined this team six months ago and have been busy learning about 
+          Cyclistic’s mission and business goals — as well as how, as a junior data analyst, can help Cyclistic achieve them.
 
-        • Cyclistic executive team: The notoriously detail-oriented executive team will decide whether to approve the recommended marketing program.
+        • Cyclistic executive team: The notoriously detail-oriented executive team will decide whether to approve the recommended 
+          marketing program.
 
-  ### 3. Specify a clear statement of the business task
-           The main purpose of the case study is to analyze how casual riders and members use Cyclistic bikes differently and uncover the trends and relationships
-hidden in the data. Also create a data visualization of the findings so as to create a strategy to influence casual riders to become Cyclistic members.
-Propose the ideas along with supportive data and visualization to the Audience to understand, evaluate and act upon it.
+## 3. Specify a clear statement of the business task
+           The main purpose of the case study is to analyze how casual riders and members use Cyclistic bikes differently and uncover 
+           the trends and relationships hidden in the data. Also create a data visualization of the findings so as to create a strategy 
+           to influence casual riders to become Cyclistic members.Propose the ideas along with supportive data and visualization to 
+           the audience to understand, evaluate and act upon it.
 
- ## PHASE 2 : PREPARE
+# PHASE 2 : PREPARE
  
          
 
