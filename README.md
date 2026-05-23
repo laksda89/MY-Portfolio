@@ -53,6 +53,63 @@ I download the datasets for the year 2025 from the link below
            the audience to understand, evaluate and act upon it.
 
 # PHASE 2 : PREPARE
+# GUIDING QUESTIONS
+## 1.Where is the data located?
+            Data is located in the link provided [https://divvy-tripdata.s3.amazonaws.com/index.html](https://divvy-tripdata.s3.amazonaws.com/index.html)
+
+## 2.How is the data organized?
+            The data is organized as zip files. I downloaded the zip files for the year 2025,12 folders for 12 months. Extracted the data 
+            from zip file and converted it to csv files for Analysis purpose.
+
+## 3.Are there issues with bias or credibility in this data? Does your data ROCCC?
+
+            There is no bias in the data and it is credible data that follows ROCCC(Reliable,Original,Comprehensive,Current,Cited).The data 
+            is licensed with an agreement, the data is ensured privacy and secured by storing the credit card details safe, the data 
+            accessibility is restricted to the common bike ride details alone.
+
+## 4.How are you addressing licensing, privacy, security, and accessibility?
+            License : [https://divvybikes.com/data-license-agreement](https://divvybikes.com/data-license-agreement)
+
+## 5.How did you verify the data’s integrity?
+            Data’s integrity is verified by running SQL queries as follows.
+            1.Checked for the same number of columns and same data type on the data from january 2025 – december 2025.
+            2.Created a master table and checked for missing values, duplicates, null values and null records.
+            3.Checked records for the time duration of rides >=24 hours <1 min as these will not be appropriate for our analysis 
+              as the bike would have been stolen if rides >= 24 and technical error if rides < 1 min.
+
+## 6.How does it help you answer your question?
+            A clean new table of data is created for analysis with new parameters such as Ride length and Day of Week as additional data to help 
+            identify the ride pattern for casual and member customers. This insight will draw the difference between the ride patterns.
+
+## 7.Are there any problems with the data?
+            The Start Station name and id as well as the End Station name and id had null values for 5585 records.Also some inconsistencies were 
+            found in the data, either corrected if possible or removed it if not appropriate for analysis. Preapred a clean data for Analysis 
+            using SQL.
+            
+# PHASE 3 - PROCESS
+# GUIDING QUESTIONS
+## 1.What tools are you choosing and why?
+             To Clean, Process and  Analyze the data, Bigquery SQL is used.
+
+## 2.Have you ensured your data’s integrity?
+              Yes, Data integrity is ensured by identifying and resolving missing or null values, removing duplicate records 
+              and performing data validation to catch errors through targeted filtering.
+
+## 3.What steps have you taken to ensure that your data is clean?
+                To ensure data is clean and ready for analysis, fulfilled the ROCCC standard followed by Removing duplicates, 
+                Handling missing data or null values, Standardize Formatting, Validate Data and fix Outliers, Verify and Document 
+                Cleaning process.
+
+## 4.How can you verify that your data is clean and ready to analyze?
+                Performed final inspection using specific metrics and tests as follows.
+                1.The Duplicate Re-Check.
+                2.Business Logic “Smoke Test” : The end time is more than the start time of the ride.
+                3.Schema and Data Type check.
+
+## 5.Have you documented your cleaning process so you can review and share those results?
+                The Cleaning process is documented to review and share results.
+
+
  
          
 
