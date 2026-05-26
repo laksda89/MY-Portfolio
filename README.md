@@ -185,7 +185,7 @@ Yes, Standardized Formatting.
 
 My data findings is presented as data visualization through Tableau.
                 
-[Click for Data Visualization](https://public.tableau.com/app/profile/palaniappan.venkatachalam/viz/MyPortfolio_17790754816860/TotalRidesRideableTypeAvg_RideLengthOnSeason)
+[Click for Data Visualization - Tableau](https://public.tableau.com/app/profile/palaniappan.venkatachalam/viz/MyPortfolio_17790754816860/TotalRidesRideableTypeAvg_RideLengthOnSeason)
 
 ## PHASE 6 - ACT
 
