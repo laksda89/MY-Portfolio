@@ -214,6 +214,11 @@ My data findings is presented as data visualization through Tableau.
 3.Referral program can be started so that current members can help add on more members by explaining the benefits they would enjoy through becoming a member. Doing this it is possible to get members from casual riders lot as well as public. 
 
 
+## PROJECT STRUCTURE
+
+[Data pre-processing and cleaning](https://github.com/laksda89/MY-Portfolio/blob/main/Analysis/Data%20pre-processing%20and%20cleaning.sql) : Removes duplicates, Handle null values and missing values, perform data validation to catch errors through targeted filtering.
+
+[Data Analysis](https://github.com/laksda89/MY-Portfolio/blob/main/Analysis/Data%20Analysis.sql) : create columns for seasons and day of week in master table, Create temporary tables to find top10 stations, perform inner join to find total number of station visits for members and casual customers.
 
                     
 
