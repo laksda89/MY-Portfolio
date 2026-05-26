@@ -54,7 +54,7 @@ The Audience are our Stakeholders. Our Key Stakeholders are as follows.
 
 • Cyclistic executive team: The notoriously detail-oriented executive team will decide whether to approve the recommended marketing program.
 
-### 3. What is the business task?
+### 3. Specify a clear statement of the business task.
 
 The main purpose of the case study is to analyze how casual riders and members use Cyclistic bikes differently and uncover the trends and relationships hidden in the data. Also create a data visualization of the findings so as to create a strategy to influence casual riders to become Cyclistic members.Propose the ideas along with supportive data and visualization to the audience to understand, evaluate and act upon it.
 
