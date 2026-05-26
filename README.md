@@ -2,6 +2,9 @@
 
 [Cyclistic Bike Share Case Study](https://laksda89.github.io/MY-Portfolio/)
 
+<img width="1817" height="676" alt="image" src="https://github.com/user-attachments/assets/7ac349a1-7251-4402-a04f-88727b467701" />
+
+
 # Google Data Analytics Capstone Project
 
 In this case study, I work for a fictional company, Cyclistic, along with some key team members.The Repository holds the analysis and visualization of actionable insights for the year 2025 that involves data from 12 months.The company has two kinds of customers casual and members. The goal is to identify the ride pattern between them and find out ways to turn the casual customers to members. In order to answer the business questions, I followed the steps of the data analysis process: Ask, Prepare, Process, Analyze, Share, and Act.The tools used are Google Bigquery for analysis in SQL and Tableau for data visualization.
