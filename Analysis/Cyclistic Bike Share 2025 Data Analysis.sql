@@ -1,3 +1,4 @@
+---Query to check all column names and data type for 12 months of the year 2025
 SELECT table_name, column_name, data_type
 FROM `cyclistic-bike-share-494916.trips_2025.INFORMATION_SCHEMA.COLUMNS`
 WHERE table_name IN ('jan_2025', 'feb_2025', 'mar_2025', 'apr_2025', 'may_2025', 'jun_2025', 'july_2025', 'aug_2025', 'sep_2025', 'oct_2025', 'nov_2025', 'dec_2025') -- add all 12 here
@@ -19,7 +20,7 @@ GROUP BY
 ORDER BY 
   table_count ASC; -- Tables with mismatches will float to the top
 
-  --CREATE A MASTER TABLE
+---CREATE A MASTER TABLE
 CREATE OR REPLACE TABLE `cyclistic-bike-share-494916.trips_2025.raw_data_2025` AS
 
 SELECT * FROM `cyclistic-bike-share-494916.trips_2025.jan_2025`
@@ -114,7 +115,7 @@ WHERE
     AND TIMESTAMP_DIFF(ended_at, started_at, HOUR) < 24
 GROUP BY 1;
 
------TO CALCULATE RIDE LENGTH IN MINUTES
+---TO CALCULATE RIDE LENGTH IN MINUTES
 SELECT 
     ride_id,
     started_at,
@@ -123,7 +124,7 @@ SELECT
     TIMESTAMP_DIFF(ended_at, started_at, MINUTE) AS ride_length_m,
     FROM `cyclistic-bike-share-494916.trips_2025.raw_data_2025`;
 
---Create a table cleaned_data_2025 which has ride_length in minutes, >60 seconds and less than 24 hours
+---Create a table cleaned_data_2025 which has ride_length in minutes, >60 seconds and less than 24 hours
     CREATE OR REPLACE TABLE `cyclistic-bike-share-494916.trips_2025.cleaned_data_2025` AS
 SELECT 
     *,
@@ -134,7 +135,7 @@ WHERE
     TIMESTAMP_DIFF(ended_at, started_at, SECOND) > 60 
     AND TIMESTAMP_DIFF(ended_at, started_at, HOUR) < 24;
 
---query to be executed later
+---query to be executed later
 SELECT 
     member_casual,
     AVG(ride_length_m) AS avg_ride_duration,
@@ -146,7 +147,7 @@ WHERE
     AND TIMESTAMP_DIFF(ended_at, started_at, HOUR) < 24
 GROUP BY 1;
 
--- super clean table is created here
+--- super clean table is created here
 CREATE OR REPLACE TABLE `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025` AS
 SELECT 
     ride_id,
@@ -175,32 +176,32 @@ WHERE
    SELECT * FROM cyclistic-bike-share-494916.trips_2025.super_clean_data_2025;
    SELECT * FROM cyclistic-bike-share-494916.trips_2025.raw_data_2025;
 
-   --Data Validation for super_clean_data_2025 : No duplicate values, no null values
-   --Range Validation is done below
+   ---Data Validation for super_clean_data_2025 : No duplicate values, no null values
+   ---Range Validation is done below
    SELECT 
   MIN(ride_length_m) AS min_length, 
   MAX(ride_length_m) AS max_length
 FROM `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`;
--- Validation: min should be > 0, max should be < 1440
---Logic Check next up
+--- Validation: min should be > 0, max should be < 1440
+---Logic Check next up
 SELECT *
 FROM `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`
 WHERE ended_at < started_at;
--- Validation: This is "Time Travel" data and should be removed.
---Typo Check
+--- Validation: This is "Time Travel" data and should be removed.
+---Typo Check
 SELECT DISTINCT member_casual 
 FROM `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`;
--- Validation: Should only show 'member' and 'casual'. 
--- If you see 'membr' or 'm', it is data entry error.
+--- Validation: Should only show 'member' and 'casual'. 
+--- If you see 'membr' or 'm', it is data entry error.
 
---Check For Empty Strings (blanks)
+---Check For Empty Strings (blanks)
 SELECT count(*) as blank_rows_count
 FROM `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`
 ---WHERE start_station_name='';
 
 WHERE '' IN (rideable_type,start_station_name,start_station_id,end_station_name,end_station_id,member_casual);
 
---MASTER CHECK (NULLs + Blanks + spaces) next up
+---MASTER CHECK (NULLs + Blanks + spaces) next up
 SELECT 
     start_station_name, 
     COUNT(*) AS total_blanks
@@ -209,10 +210,10 @@ WHERE start_station_name IS NULL
    OR TRIM(start_station_name) = ''
 GROUP BY 1;
    
---Started Analyzing data here
---Temporal Formatting : Format and get month
+---Started Analyzing data here
+---Temporal Formatting : Format and get month
 SELECT *, FORMAT_DATE('%B', started_at) AS month,FORMAT_DATE('%Y-%m', started_at) as Year_month FROM `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`;
---ROUND AVG.RIDE LENGTH TO 2 DECIMAL PLACES
+---ROUND AVG.RIDE LENGTH TO 2 DECIMAL PLACES
 SELECT 
     member_casual,
     ROUND(AVG(ride_length_m), 2) AS avg_ride_m,  -- 15.44 instead of 15.4439281
@@ -220,7 +221,7 @@ SELECT
 FROM `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`
 GROUP BY 1;
 
---CATAGORICAL FORMATTING (Labeling Week days to words using CASE to display charts in Tableau/Power Bi correctly)
+---CATAGORICAL FORMATTING (Labeling Week days to words using CASE to display charts in Tableau/Power Bi correctly)
 SELECT
     CASE 
         WHEN EXTRACT(DAYOFWEEK FROM started_at) = 1 THEN 'Sunday'
@@ -238,30 +239,30 @@ FROM `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`
 GROUP BY 1, 2
 ORDER BY trip_count DESC;
 
---Check whether rideable_type has typo error
+---Check whether rideable_type has typo error
 SELECT rideable_type, COUNT(rideable_type) AS total_count_rideable_type FROM cyclistic-bike-share-494916.trips_2025.super_clean_data_2025
 GROUP BY rideable_type;
 
---Analyze Trends and Relationship in the data
---See the total trips count during weekdays in the below query, casual and member seperately along with ride length
+---Analyze Trends and Relationship in the data
+---See the total trips count during weekdays in the below query, casual and member seperately along with ride length
 SELECT member_casual,COUNT(ride_id) as total_trips_count, ROUND(AVG(ride_length_m),2) as Avg_ride_length FROM cyclistic-bike-share-494916.trips_2025.super_clean_data_2025
 WHERE Day_of_week IN (2,3,4,5,6)
 GROUP BY member_casual
 order by total_trips_count DESC;
 
---Weekend scenario in the below query
+---Weekend scenario in the below query
 SELECT member_casual,COUNT(ride_id) as total_trips_count,ROUND(AVG(ride_length_m),2) as Avg_ride_length FROM cyclistic-bike-share-494916.trips_2025.super_clean_data_2025
 WHERE Day_of_week IN (7,1)
 GROUP BY member_casual
 order by total_trips_count desc;
---During Weekdays Trip count of members are more than casual riders
---Avg.Ride length of casual riders is more than members
+---During Weekdays Trip count of members are more than casual riders
+---Avg.Ride length of casual riders is more than members
 
---During Weekend Trip count of members are again more than casual riders by ten thousand
---Avg.ride length of casual riders are agsin more than member riders
---Always the Avg.ride length of casual riders is high on both Weekdays and Weekend
+---During Weekend Trip count of members are again more than casual riders by ten thousand
+---Avg.ride length of casual riders are agsin more than member riders
+---Always the Avg.ride length of casual riders is high on both Weekdays and Weekend
 
---CASE Statement to find the weekdays and weekend pattern 
+---CASE Statement to find the weekdays and weekend pattern 
 SELECT 
     member_casual,
     CASE 
@@ -275,21 +276,21 @@ GROUP BY 1, 2
 ORDER BY 1, 2;
 
 
------To Identify Trend relationship on the trip counts between member_casual over the seasons for the entire year 2025
------Alter table with month and year_month as String datatype
+---To Identify Trend relationship on the trip counts between member_casual over the seasons for the entire year 2025
+---Alter table with month and year_month as String datatype
 ALTER TABLE `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`
 ADD COLUMN month String,
 ADD COLUMN year_month String;
 
------Now Update the table to fill in values for above mentioned columns
+---Now Update the table to fill in values for above mentioned columns
 UPDATE `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`
---SET month = FORMAT_DATE('%B',started_at) WHERE month IS NULL;
+---SET month = FORMAT_DATE('%B',started_at) WHERE month IS NULL;
 SET year_month = FORMAT_DATE('%y -%m', started_at) WHERE year_month IS NULL;
 
 SELECT * FROM `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`;
 
 
----- USE CASE STATEMENT TO CATAGORIZE SEASON TO IDENTIFY TRENDS AND RELATIONSHIP
+--- USE CASE STATEMENT TO CATAGORIZE SEASON TO IDENTIFY TRENDS AND RELATIONSHIP
 SELECT member_casual, COUNT(ride_id) as Total_rides, ROUND(AVG(ride_length_m))as Avg_ride_length,
   CASE 
      WHEN month IN('January','February','March') THEN 'Winter'
@@ -328,7 +329,7 @@ UPDATE `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`
    END
    WHERE month IS NOT NULL;
 
-----"Audit Query" to make sure no rows ended up as 'Unknown' accidentally
+---"Audit Query" to make sure no rows ended up as 'Unknown' accidentally
 SELECT month, Season, COUNT(*) as count
 FROM `cyclistic-bike-share-494916.trips_2025.super_clean_data_2025`
 GROUP BY 1, 2
@@ -460,7 +461,7 @@ SELECT * FROM `cyclistic-bike-share-494916.trips_2025.Top10_member_stations_lat_
 SELECT * FROM `cyclistic-bike-share-494916.trips_2025.Top10_casual_stations_lat_lng`;
 SELECT * FROM `cyclistic-bike-share-494916.trips_2025.Top10_member_casual_lat_lng_stations_union`;
 
-----Creating a Table with latitude and longitude columns for Top10_member_casual_lat_lng_stations to display map visualization using Tableau
+---Creating a Table with latitude and longitude columns for Top10_member_casual_lat_lng_stations to display map visualization using Tableau
 CREATE OR REPLACE TABLE `cyclistic-bike-share-494916.trips_2025.Top10_member_casual_lat_lng_stations_union` as
 SELECT 
     start_station_name,
@@ -480,7 +481,7 @@ SELECT
     'casual' AS user_type
 FROM `cyclistic-bike-share-494916.trips_2025.Top10_casual_stations_lat_lng`;
 
-------Extracting ride_hour for casual riders to see at what time of the day riders prefer trips during Week Days and Week End
+---Extracting ride_hour for casual riders to see at what time of the day riders prefer trips during Week Days and Week End
 CREATE OR REPLACE TABLE `cyclistic-bike-share-494916.trips_2025.hourly_usage_summary` as
 SELECT 
     EXTRACT(HOUR FROM started_at) AS ride_hour,
