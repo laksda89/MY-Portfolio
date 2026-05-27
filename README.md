@@ -225,6 +225,51 @@ For the full interactive analysis, please visit the live dashboard here.
 
 [Data Analysis](https://github.com/laksda89/MY-Portfolio/blob/main/Analysis/Data%20Analysis.sql) : Create columns for Season and Day of Week in master table, create temporary tables to find top10 stations, perform inner join to find total number of station visits for members and casual customers.
 
+
+## Summary of Tableau Dashboard
+
+[Tableau Public Profile](https://public.tableau.com/app/profile/palaniappan.venkatachalam/viz/MyPortfolio_17790754816860/TotalRidesRideableTypeAvg_RideLengthOnSeason)
+
+### Dashboard 1 : Total Rides\Rideable Type\Avg.Ride Length On Season
+
+1.**Electric bike usage > Classic Bike usage** by both members and casual customers.
+
+2.The Average Ride Length is high for casual customers than members on all the 4 seasons of the year 2025.
+
+3.**casual X2 more than members** define that Average Ride Length for casual customers is 2 times more than members irrespective of the trip counts.
+
+
+### Dashboard 2 : Top10 Stations of Year 2025
+
+Top10 member stations and Top10 casual customer stations depending on the Number of visits made by respective customers as both Start stations and End Stations. This data will be helpful in constructing a map.
+
+### Dashboard 3 : Geospatial Analysis of Bike Share Stations
+
+1.The map is constructed from Top10 stations data for both members and casual customers depending on the latitude and longitude column provided in the raw data from data source.
+
+2.It can be seen that the member stations are inside city mostly Corporate areas while casual customer stations are tourist attraction spots near seas, parks etc.
+This justifies the highest Average Ride Length(relaxing bike rides) by casual custoers on weekend near attraction places.
+
+### Dashboard 4 : Average Ride Length and Hourly Ride Pattern
+
+The Average Ride Length is always high for casual customers eventhough their trip counts are much lesser than members. Casual customers ride leisurely for a long time than members who commute to office for short time.
+
+**Hourly Ride Pattern - Weekday**
+
+1.Cyclistic member rides peak times are regular office hours, 8 am in the morning and 5 pm in the evening.
+
+2.Casual customer rides can be seen during after office hours, after 5 pm for leisure rides.
+
+**Hourly Ride Pattern - Weekend**
+
+The rides peak gradually during the day for both members and casual customers with the maximum count at 3 pm.
+
+
+
+
+
+
+
                     
 
 
