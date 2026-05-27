@@ -2,7 +2,7 @@
 
 [Cyclistic Bike Share Case Study](https://laksda89.github.io/MY-Portfolio/)
 
-<img width="1817" height="676" alt="image" src="https://github.com/user-attachments/assets/7ac349a1-7251-4402-a04f-88727b467701" />
+<img width="1821" height="661" alt="image" src="https://github.com/user-attachments/assets/62322095-e91e-45c0-a695-17d0447ac41e" />
 
 
 # Google Data Analytics Capstone Project
