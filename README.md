@@ -236,7 +236,7 @@ For the full interactive analysis, please visit the live dashboard here.
 
 2.The Average Ride Length is high for casual customers than members on all the 4 seasons of the year 2025.
 
-3.**casual X2 more than members** define that Average Ride Length for casual customers is 2 times more than members irrespective of the trip counts.
+3.**casual trip counts X2 more than member trip counts** define that Average Ride Length for casual customers is 2 times more than members irrespective of the trip counts.
 
 
 ### Dashboard 2 : Top10 Stations of Year 2025
