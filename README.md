@@ -221,9 +221,9 @@ For the full interactive analysis, please visit the live dashboard here.
 
 ## PROJECT STRUCTURE
 
-[Data pre-processing and cleaning](https://github.com/laksda89/MY-Portfolio/blob/main/Analysis/Data%20pre-processing%20and%20cleaning.sql) : Removes duplicates, Handle null values and missing values, perform data validation to catch errors through targeted filtering.
+[Data pre-processing and cleaning](https://github.com/laksda89/MY-Portfolio/blob/main/Analysis/Data%20pre-processing%20and%20cleaning.sql) : Queries to remove duplicates, handle null and missing values, perform data validation to catch errors through targeted filtering.
 
-[Data Analysis](https://github.com/laksda89/MY-Portfolio/blob/main/Analysis/Data%20Analysis.sql) : create columns for seasons and day of week in master table, Create temporary tables to find top10 stations, perform inner join to find total number of station visits for members and casual customers.
+[Data Analysis](https://github.com/laksda89/MY-Portfolio/blob/main/Analysis/Data%20Analysis.sql) : Create columns for Season and Day of Week in master table, create temporary tables to find top10 stations, perform inner join to find total number of station visits for members and casual customers.
 
                     
 
